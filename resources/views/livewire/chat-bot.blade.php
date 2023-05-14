@@ -93,25 +93,25 @@
             </div>
         </div>
     </div>
-    
+
     <style>
         .scrollbar-w-2::-webkit-scrollbar {
             width: 0.5rem;
             height: 0.5rem;
         }
-        
+
         .scrollbar-track-blue-lighter::-webkit-scrollbar-track {
             --bg-opacity: 1;
             background-color: #f7fafc;
             background-color: rgba(247, 250, 252, var(--bg-opacity));
         }
-        
+
         .scrollbar-thumb-blue::-webkit-scrollbar-thumb {
             --bg-opacity: 1;
             background-color: #edf2f7;
             background-color: rgba(237, 242, 247, var(--bg-opacity));
         }
-        
+
         .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
             border-radius: 0.25rem;
         }
@@ -148,7 +148,7 @@
             border-bottom-right-radius: 0px;
         }
     </style>
-    
+
     <script>
         const el = document.getElementById('messages')
         window.onload = function(){
@@ -156,7 +156,7 @@
         }
 
         var textarea = document.querySelector('#chat-input');
-    
+
         textarea.addEventListener("input", function(e) {
             this.style.height = "inherit";
             this.style.height = `${this.scrollHeight}px`;
@@ -194,7 +194,7 @@
                 Livewire.emit("ctrl+d");
                 return
             }
-            
+
         }
     </script>
 

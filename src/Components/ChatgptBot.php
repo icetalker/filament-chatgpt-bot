@@ -87,9 +87,13 @@ class ChatgptBot extends Component
         if($response){
             $response = json_decode($response);
         }
-        
-        $this->messages[] = ['role' => 'assistant', 'content' => $response->choices[0]->message->content];
-    
+
+        if (@$response->error) {
+            $this->messages[] = ['role' => 'assistant', 'content' => $response->error->message];
+        } else {
+            $this->messages[] = ['role' => 'assistant', 'content' => @$response->choices[0]->message->content];
+        }
+
         request()->session()->put('messages', $this->messages);
 
     }
