@@ -37,7 +37,7 @@ class FilamentChatgptBotServiceProvider extends PackageServiceProvider
         if(config('filament-chatgpt-bot.enable')){
             Filament::registerRenderHook(
                 'body.end',
-                fn (): string => Blade::render('@livewire(\'filament-chatgpt-bot\')'),
+                fn (): string => auth()->check() ? Blade::render('@livewire(\'filament-chatgpt-bot\')') : '',
             );
         }
 
