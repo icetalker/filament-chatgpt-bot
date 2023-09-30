@@ -4,7 +4,7 @@ namespace Icetalker\FilamentChatgptBot;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Filament\Facades\Filament;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Icetalker\FilamentChatgptBot\Components\ChatgptBot;
 use Livewire\Livewire;
@@ -35,9 +35,9 @@ class FilamentChatgptBotServiceProvider extends PackageServiceProvider
         Livewire::component('filament-chatgpt-bot', ChatgptBot::class);
 
         if(config('filament-chatgpt-bot.enable')){
-            Filament::registerRenderHook(
-                'body.end',
-                fn (): string => auth()->check() ? Blade::render('@livewire(\'filament-chatgpt-bot\')') : '',
+            FilamentView::registerRenderHook(
+                'panels::body.end',
+                fn (): string => auth()->check() ? Blade::render('@livewire(\'filament-chatgpt-bot\')'):'',
             );
         }
 

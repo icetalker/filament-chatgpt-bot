@@ -9,10 +9,17 @@ class ChatgptBot extends Component
 {
 
     public array $messages;
+
     public string $question;
+
     public string $winWidth;
+
     public string $winPosition;
+
+    public bool $showPositionBtn;
+
     public bool $panelHidden;
+
     protected $listeners = [
         //shortcut
         'ctrl+s' => 'sendMessage',
@@ -26,6 +33,7 @@ class ChatgptBot extends Component
         $this->panelHidden = true;
         $this->winWidth = "width:350px;";
         $this->winPosition = "";
+        $this->showPositionBtn = true;
         $this->messages = session('messages', []);
         $this->question = "";
     }
@@ -46,7 +54,7 @@ class ChatgptBot extends Component
             "content" => $this->question,
         ];
 
-        $this->dispatchBrowserEvent('sendmessage', ['message' => $this->question]);
+        $this->dispatch('sendmessage', ['message' => $this->question]);
         $this->question = "";
         $this->chat();
     }
@@ -55,8 +63,10 @@ class ChatgptBot extends Component
     {
         if($this->winWidth=="width:350px;"){
             $this->winWidth = "width:100%;";
+            $this->showPositionBtn = false;
         }else{
             $this->winWidth = "width:350px;";
+            $this->showPositionBtn = true;
         }
     }
 

@@ -28,6 +28,12 @@ First, you can install the package via composer:
 composer require icetalker/filament-chatgpt-bot
 ```
 
+For Filament V2, Please lock the the version to v0.1.*:
+
+```bash
+composer require icetaker/filament-chatgpt-bot:"v0.1.3"
+```
+
 ## Publish Config Files
 
 Next, you can publish the config files with:
@@ -60,7 +66,7 @@ php artisan vendor:publish --tag="filament-chatgpt-bot-views"
 
 ## More
 
-You could hide the chatgpt icon by setting `enable` to `false` on `config/filament-chatgpt-bot.php`:
+1. By defult, there is a small chatgpt icon on bottom-right corner of admin panel after the package installed. You could hide the icon by setting `enable` to `false` in `config/filament-chatgpt-bot.php` files:
 
 ```php
 
@@ -68,13 +74,36 @@ You could hide the chatgpt icon by setting `enable` to `false` on `config/filame
 
 ```
 
-and you can add it to the blade page you like manually:
+> This may require you publish [config files](#publish-config-files).
+
+2. You could also render it in [Panel Configuration](https://laravel-filament.cn/docs/en/3.x/panels/configuration#render-hooks) like this：
+
+```php
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ...
+        ->renderHook(
+            'panels::body.end',
+            fn (): string => auth()->check() ? Blade::render('@livewire(\'livewire-ui-modal\')') : '',
+        );
+}
+```
+
+> Set `enable` in `config/filament-chatgpt-bot.php` files, if you like to render it in [Panel Configuration](https://laravel-filament.cn/docs/en/3.x/panels/configuration#render-hooks).
+
+3. Alternatively, you can add it to any blade file within livewire page if you like to do it manually:
 
 ```blade
-...
+<body>
 
-@livewire('filament-chatgpt-bot')
+    ...
+
+    @livewire('filament-chatgpt-bot')
+</body>
 ```
+
+> This is work for all livewire page in any Laravel Project, not just Filament. Please also make sure Tailwind CSS and Livewire were imported properly while use in other Laravel Project.
 
 ## Changelog
 
