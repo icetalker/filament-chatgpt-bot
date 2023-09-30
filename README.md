@@ -1,6 +1,11 @@
 # ChatGPT Intergration 
 
 Filament ChatGPT Bot is a filament plugin that allow you to use ChatGPT out of the box within Filament Application. 
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/icetalker/filament-chatgpt-bot.svg?style=flat-square)](https://packagist.org/packages/icetalker/filament-chatgpt-bot)
+[![Total Downloads](https://img.shields.io/packagist/dt/icetalker/filament-chatgpt-bot.svg?style=flat-square)](https://packagist.org/packages/icetalker/filament-chatgpt-bot)
+
+Preview:
 ![](./screenshot/dark-mode.png)
 Full Screen:
 ![](./screenshot/full-screen.png)

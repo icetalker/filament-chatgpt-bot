@@ -2,7 +2,7 @@
     <!-- component -->
     <div class="fixed bottom-0 right-0 z-20 cursor-pointer border-gray-500 shadow">
         <div class="relative h-6 w-6 p-1 rounded-full text-white flex items-center justify-center" style="background-color: {{ $panelHidden ? '#888' : 'rgb(16, 163, 127)' }};" wire:click="$toggle('panelHidden')" id="btn-chat">
-            <x-chatgpt-svg />
+            <x-filament-chatgpt-bot::chatgpt-svg />
         </div>
     </div>
     <div class="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen border border-solid border-blue-500 fixed {{ $winPosition=="left"?"left-0":"right-0" }} bottom-0 bg-white shadow z-10 {{ $panelHidden ? 'hidden' : '' }}" style="{{ $winWidth }}" id="chat-window">
@@ -15,7 +15,7 @@
                         </svg>
                     </span>
                     <div class="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center" style="background-color: rgb(16, 163, 127);">
-                        <x-chatgpt-svg />
+                        <x-filament-chatgpt-bot::chatgpt-svg />
                     </div>
                 </div>
                 <div class="flex flex-col leading-tight">
@@ -61,10 +61,10 @@
                     <div class="chat-message">
                         <div class="flex items-end">
                             <div class="flex flex-col space-y-2 text-xs mx-2 order-2 items-start">
-                                <div><div class="px-4 py-2 rounded-lg block rounded-bl-none bg-gray-300 text-gray-600">{!! \Illuminate\Mail\Markdown::parse($message['content']) !!}</div></div>
+                                <div><div class="px-4 py-2 rounded-lg block rounded-bl-none bg-gray-300 text-gray-600">@isset($message['content']){!! \Illuminate\Mail\Markdown::parse($message['content']) !!}@endisset</div></div>
                             </div>
                             <div class="relative h-5 w-5 p-1 rounded-full text-white flex items-center justify-center" style="background-color: rgb(16, 163, 127);">
-                                <x-chatgpt-svg />
+                                <x-filament-chatgpt-bot::chatgpt-svg />
                             </div>
                         </div>
                     </div>
