@@ -48,7 +48,7 @@ This will create a `config/filament-chatgpt-bot.php` configuration file in your 
 OPENAI_API_KEY=sk-...
 ```
 
-Go to admin panel, you will see a small icon in gray color on the bottom-right corner of every page. Click the icon, you could see a chat panel. And now you can talk to OpenAI ChatGPT with the chat panel. Click the small icon agin, the chat panel will be hided again.
+Go to admin panel, you will see a small icon in gray color on the bottom-right corner of every page. Click the icon, you will then see a chat panel. And now you can talk to OpenAI ChatGPT with the chat panel. Click the small icon again, the chat panel will become hidden again.
 
 By add the `OPENAI_PROXY` to `.env` file, you could use http proxy to connect ChatGPT. Example as below:
 
