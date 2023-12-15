@@ -50,7 +50,7 @@ OPENAI_API_KEY=sk-...
 
 Go to admin panel, you will see a small icon in gray color on the bottom-right corner of every page. Click the icon, you will then see a chat panel. And now you can talk to OpenAI ChatGPT with the chat panel. Click the small icon again, the chat panel will become hidden again.
 
-By add the `OPENAI_PROXY` to `.env` file, you could use http proxy to connect ChatGPT. Example as below:
+By optionally adding the `OPENAI_PROXY` to `.env` file, you could use http proxy to connect ChatGPT. Example as below:
 
 ```
 OPENAI_PROXY=127.0.0.1:8080
