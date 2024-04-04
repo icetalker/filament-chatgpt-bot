@@ -103,7 +103,7 @@ public function panel(Panel $panel): Panel
 </body>
 ```
 
-> This is work for all livewire page in any Laravel Project, not just Filament. Please also make sure Tailwind CSS and Livewire were imported properly while use in other Laravel Project.
+> This is work for all livewire page in any Laravel Project, not just Filament. Please also make sure Tailwind CSS and Livewire were imported properly while use in other Laravel Project. And please note that you should also set `enable` to be `false` in `config/filament-chatgpt-bot.php` files while use this in non-Filament Project.
 
 ## Changelog
 

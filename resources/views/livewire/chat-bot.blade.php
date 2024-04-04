@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex flex-col leading-tight">
                     <div class="text-2xl mt-1 flex items-center">
-                        <span class="text-gray-700 mr-3">ChatGPT</span>
+                        <span class="text-gray-700 mr-3">{{ $name }}</span>
                     </div>
                     <span class="text-lg text-gray-600"></span>
                 </div>
@@ -211,6 +211,11 @@
             //     Livewire.emit("ctrl+g");
             //     return
             // }
+            if(event.ctrlKey && event.altKey && event.keyCode===90){
+                event.preventDefault();
+                Livewire.emit("ctrl+alt+z");
+                return
+            }
             if(event.ctrlKey && event.keyCode===83){
                 event.preventDefault();
                 Livewire.emit("ctrl+s");

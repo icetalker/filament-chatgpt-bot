@@ -8,6 +8,8 @@ use Livewire\Component;
 class ChatgptBot extends Component
 {
 
+    public string $name;
+
     public array $messages;
 
     public string $question;
@@ -20,13 +22,21 @@ class ChatgptBot extends Component
 
     public bool $panelHidden;
 
+    private string $sessionKey;
+
     protected $listeners = [
         //shortcut
         'ctrl+s' => 'sendMessage',
         'ctrl+r' => 'changeWinWidth',
         'ctrl+p' => 'changeWinPosition',
         'ctrl+d' => 'resetSession',
+        'ctrl+alt+z' => 'togglePanel',
     ];
+
+    public function __construct()
+    {
+        $this->sessionKey = auth()->id() . '-messages';
+    }
 
     public function mount(): void
     {
@@ -34,13 +44,18 @@ class ChatgptBot extends Component
         $this->winWidth = "width:350px;";
         $this->winPosition = "";
         $this->showPositionBtn = true;
-        $this->messages = session('messages', []);
+        $this->messages = session($this->sessionKey, []);
         $this->question = "";
     }
 
     public function render()
     {
         return view('filament-chatgpt-bot::livewire.chat-bot');
+    }
+
+    public function name(): void
+    {
+        $this->name =  config('filament-chatgpt-bot.botname') ?? 'ChatGPT';
     }
 
     public function sendMessage(): void
@@ -81,8 +96,13 @@ class ChatgptBot extends Component
 
     public function resetSession(): void
     {
-        request()->session()->forget('messages');
+        request()->session()->forget($this->sessionKey);
         $this->messages = [];
+    }
+
+    public function togglePanel(): void
+    {
+        $this->panelHidden = !$this->panelHidden;
     }
 
     protected function chat(): void
@@ -104,7 +124,8 @@ class ChatgptBot extends Component
             $this->messages[] = ['role' => 'assistant', 'content' => @$response->choices[0]->message->content];
         }
 
-        request()->session()->put('messages', $this->messages);
+        request()->session()->put($this->sessionKey, $this->messages);
 
     }
+
 }

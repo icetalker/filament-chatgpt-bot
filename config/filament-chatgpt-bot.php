@@ -4,6 +4,8 @@
 return [
     'enable' => true,
 
+    'botname' => env('ICETALKER_BOTNAME'),
+
     'openai' => [
         'api_key' => env('OPENAI_API_KEY'),
         'organization' => env('OPENAI_ORGANIZATION'),
