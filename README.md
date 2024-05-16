@@ -6,11 +6,11 @@ Filament ChatGPT Bot is a filament plugin that allow you to use ChatGPT out of t
 [![Total Downloads](https://img.shields.io/packagist/dt/icetalker/filament-chatgpt-bot.svg?style=flat-square)](https://packagist.org/packages/icetalker/filament-chatgpt-bot)
 
 Preview:
-![](./screenshot/dark-mode.png)
+![](https://raw.githubusercontent.com/icetalker/filament-chatgpt-bot/screenshot/dark-mode.png)
 Full Screen:
-![](./screenshot/full-screen.png)
+![](https://raw.githubusercontent.com/icetalker/filament-chatgpt-bot/screenshot/full-screen.png)
 Light Mode:
-![](./screenshot/light-mode.png)
+![](https://raw.githubusercontent.com/icetalker/filament-chatgpt-bot/screenshot/light-mode.png)
 
 ## Feature
 

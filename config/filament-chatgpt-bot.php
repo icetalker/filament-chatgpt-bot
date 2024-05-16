@@ -2,7 +2,7 @@
 
 // config for Icetalker/FilamentChatgptBot
 return [
-    'enable' => true,
+    'enable' => false,
 
     'botname' => env('ICETALKER_BOTNAME'),
 
