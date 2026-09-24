@@ -4,6 +4,8 @@ namespace Icetalker\FilamentChatgptBot;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Icetalker\FilamentChatgptBot\Components\ChatgptBot;
@@ -31,10 +33,11 @@ class FilamentChatgptBotServiceProvider extends PackageServiceProvider
     {
         $this->bootLoaders();
         $this->bootPublishing();
-
+        
         Livewire::component('filament-chatgpt-bot', ChatgptBot::class);
-
-        if(config('filament-chatgpt-bot.enable')){
+        
+        if(config('filament-chatgpt-bot.enable')==true){
+            $this->registerAssets();
             FilamentView::registerRenderHook(
                 'panels::body.end',
                 fn (): string => auth()->check() ? Blade::render('@livewire(\'filament-chatgpt-bot\')'):'',
@@ -57,6 +60,17 @@ class FilamentChatgptBotServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__.'/../config/filament-chatgpt-bot.php' => config_path('filament-chatgpt-bot.php'),
         ], 'filament-chatgpt-bot-config');
+
+        $this->publishes([
+            __DIR__.'/../dist/assets/css/chatbot.css' => public_path('css/filament-chatgpt-bot/chatbot.css'),
+        ], 'filament-chatgpt-bot-css');
+    }
+
+    protected function registerAssets()
+    {
+        FilamentAsset::register([
+            Css::make('chatbot', __DIR__ .'/../dist/assets/css/chatbot.css')
+        ], 'filament-chatgpt-bot');
     }
 
 }

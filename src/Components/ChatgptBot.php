@@ -46,6 +46,7 @@ class ChatgptBot extends Component
         $this->showPositionBtn = true;
         $this->messages = session($this->sessionKey, []);
         $this->question = "";
+        $this->name();
     }
 
     public function render()
@@ -55,7 +56,7 @@ class ChatgptBot extends Component
 
     public function name(): void
     {
-        $this->name =  config('filament-chatgpt-bot.botname') ?? 'ChatGPT';
+        $this->name = empty(config('filament-chatgpt-bot.botname')) ? 'ChatGPT':config('filament-chatgpt-bot.botname');
     }
 
     public function sendMessage(): void

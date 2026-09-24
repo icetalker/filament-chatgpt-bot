@@ -2,9 +2,9 @@
 
 // config for Icetalker/FilamentChatgptBot
 return [
-    'enable' => false,
+    'enable' => env('CHATBOT_ENABLE', true),
 
-    'botname' => env('ICETALKER_BOTNAME'),
+    'botname' => env('ICETALKER_BOTNAME', 'CHATGPT'),
 
     'openai' => [
         'api_key' => env('OPENAI_API_KEY'),

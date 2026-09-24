@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+.chatbot-box{
+    @apply relative w-full;
+
+    & .chatbot-chat-btn-wrapper{
+        @apply fixed bottom-0 right-0 z-30 cursor-pointer border-gray-500 shadow;
+
+        & .chatbot-chat-btn{
+            @apply relative h-6 w-6 p-1 rounded-full text-white flex items-center justify-center;
+        }
+    }
+
+    & .chatbot-window{
+        @apply flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen border border-solid border-blue-500 fixed bottom-0 bg-white shadow z-30;
+
+        & .chatbot-window-header{
+            @apply flex sm:items-center justify-between px-2 py-3 border-b-2 border-gray-200;
+
+            & .chatbot-user{
+                @apply relative flex items-center gap-2;
+
+                & .chatbot-user-avatar{
+                    @apply relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center;
+                }
+            }
+            & .chatbot-window-actions{
+                @apply flex items-center gap-2;
+
+                & .chatbot-window-action-button{
+                    @apply inline-flex items-center justify-center rounded-lg border h-8 w-8 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none;
+                }
+            }
+        }
+
+        & .chatbot-content-box{
+            @apply  flex flex-col space-y-4 p-3 overflow-y-auto;
+            & .chat-bubble{
+                & .bubble-left{
+                    @apply flex items-end;
+                    & .message-content-container{
+                        @apply flex flex-col space-y-2 text-xs mx-2 order-2 items-start;
+                    }
+                    & .message-sender{
+                        @apply relative h-5 w-5 p-1 rounded-full text-white flex items-center justify-center;
+                    }
+                }
+                & .bubble-right{
+                    @apply flex items-end justify-end;
+                    & .message-content-container{
+                        @apply flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end;
+                    }
+                    & .sender-avatar{
+                        @apply w-6 h-6 rounded-full order-2;
+                    }
+                }
+                & .message-content{
+                    @apply px-4 py-2 rounded-lg block rounded-bl-none bg-gray-300 text-gray-600;
+                    
+                }
+                
+            }
+        }
+
+        & .chatbot-input-box{
+            @apply border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0;
+
+            & .sending-tip{
+                @apply py-2 text-sm;
+            }
+
+            & .chatbot-input-wrapper{
+                @apply flex flex-col w-full py-2 flex-grow md:py-3 md:pl-4 relative bg-gray-200 dark:border-gray-900/50 dark:text-white dark:bg-gray-900 rounded-md shadow;
+
+                & textarea{
+                    @apply m-0 w-full resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus:outline-none focus:placeholder-gray-400 dark:bg-transparent pl-2 md:pl-0;
+                }
+
+                & .message-button{
+                    @apply absolute p-1 rounded-md text-gray-500 bottom-1.5 md:bottom-2.5 hover:bg-gray-100 enabled:dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent right-1 md:right-2 disabled:opacity-40;
+                }
+            }
+
+            
+        }
+    }
+}
+
+.scrollbar-w-2::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
+    --bg-opacity: 1;
+    background-color: #f7fafc;
+    background-color: rgba(247, 250, 252, var(--bg-opacity));
+}
+
+.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
+    --bg-opacity: 1;
+    background-color: #edf2f7;
+    background-color: rgba(237, 242, 247, var(--bg-opacity));
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+    border-radius: 0.25rem;
+}

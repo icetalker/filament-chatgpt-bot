@@ -1,0 +1,11 @@
+{
+  "resources/css/chatbot.css": {
+    "file": "css/chatbot.css",
+    "src": "resources/css/chatbot.css",
+    "isEntry": true,
+    "name": "chatbot",
+    "names": [
+      "chatbot.css"
+    ]
+  }
+}
