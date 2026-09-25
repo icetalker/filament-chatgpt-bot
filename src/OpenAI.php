@@ -13,7 +13,7 @@ final class OpenAI{
     {
         $openai_key = config('filament-chatgpt-bot.openai.api_key');
         if(!$openai_key){
-            return throw new Exception("API_KEY Missing!");
+            throw new Exception("API_KEY Missing!");
         }
         $proxy = config('filament-chatgpt-bot.proxy');
 

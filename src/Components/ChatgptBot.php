@@ -112,7 +112,7 @@ class ChatgptBot extends Component
         $client = OpenAI::client();
 
         $response = $client->chat([
-            'model' => 'gpt-3.5-turbo',
+            'model' => config('filament-chatgpt-bot.openai.model'),
             'messages' => $this->messages
         ]);
         if($response){

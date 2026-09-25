@@ -45,7 +45,7 @@ php artisan vendor:publish --tag="filament-chatgpt-bot-config"
 
 This will create a configuration file locate in `config/filament-chatgpt-bot.php`, and you can set up the Chatbot by setting envirnoment in `.env`:
 
-```txt
+```
 CHATBOT_ENABLE = true #default to be true, no need to set unless you would like to disable it.
 
 OPENAI_API_KEY=sk-...
@@ -58,7 +58,14 @@ By optionally adding the `OPENAI_PROXY` to `.env` file, you could use http proxy
 ```
 OPENAI_PROXY=127.0.0.1:8080
 ```
+
 > For more options, please check in `config/filament-chatgpt-bot.php`;
+
+Now, the default model is `gpt-5.6-sol`. You can change the GPT model to what you need by setting `OPENAI_MODEL` in `.env` file:
+
+```
+OPENAI_MODEL = 
+```
 
 ### Publish CSS File
 
@@ -106,7 +113,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-> Set `enable=true` in `config/filament-chatgpt-bot.php` files, if you like to render it in [Admin Panel](https://laravel-filament.cn/docs/zh-CN/5.x/advanced/render-hooks).
+> Set `enable=true` in `config/filament-chatgpt-bot.php` files, if you like to render it in [Panel Configuration](https://laravel-filament.cn/docs/zh-CN/5.x/advanced/render-hooks).
 
 3. Alternatively, you can add it to any blade file within livewire page if you like to do it manually;
 
